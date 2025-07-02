@@ -1,2 +1,750 @@
 # francke15.github.io-francke15
 mon portfolio
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Franck Romual</title>
+    <link rel="stylesheet" href="lolz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    </head>
+  <style>
+/* Variables CSS pour les couleurs */
+:root {
+    --bg-dark: #1a1a1a; /* Couleur de fond principale */
+    --text-light: #f0f0f0; /* Couleur du texte clair */
+    --accent-color: #00e6e6; /* Couleur d'accentuation cyan */
+    --card-bg: #2a2a2a; /* Couleur de fond des cartes */
+    --border-color: #3a3a3a; /* Couleur des bordures */
+    --hover-color: #00ffff; /* Couleur au survol pour les accents */
+}
+
+/* Réinitialisation de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Utilisez une police comme Poppins ou Open Sans */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--bg-dark);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar nav ul li {
+    margin-left: 30px;
+}
+
+.navbar nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover,
+.navbar nav ul li a.active {
+    color: var(--accent-color);
+}
+
+/* Sections générales */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 36px;
+    margin-bottom: 60px;
+    color: var(--text-light);
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: var(--bg-dark);
+    padding: 100px 0;
+}
+
+.hero-section .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.hero-content .highlight {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.hero-content .social-links {
+    margin: 30px 0;
+}
+
+.hero-content .social-icon {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    background-color: var(--card-bg);
+    border-radius: 50%;
+    margin-right: 15px;
+    color: var(--accent-color);
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid var(--accent-color); /* Pour l'effet de bordure lumineuse */
+    box-shadow: 0 0 5px var(--accent-color);
+}
+
+.hero-content .social-icon:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-dark);
+    box-shadow: 0 0 10px var(--hover-color), 0 0 20px var(--hover-color);
+}
+
+.btn-download-cv {
+    background-color: var(--accent-color);
+    color: var(--bg-dark);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-download-cv:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    position: relative;
+    width: 350px; /* Taille de l'image hexagonale */
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Important pour masquer ce qui dépasse de l'hexagone */
+}
+
+/* L'effet hexagonal est complexe avec CSS pur pour l'image.
+   Une approche serait d'utiliser clip-path sur un conteneur et l'image.
+   Ceci est une version simplifiée ou vous auriez une image pré-découpée.
+   Pour un clip-path dynamique: */
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Exemple de clip-path pour un hexagone pointu vers le haut */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    filter: drop-shadow(0 0 15px var(--accent-color)); /* Ombre lumineuse */
+}
+
+/* Bordure lumineuse pour l'image */
+.hero-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    /* Appliquez le même clip-path que l'image */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+    z-index: 1; /* Pour être au-dessus de l'image si besoin, ou derrière pour un effet de halo */
+}
+
+
+/* About Section */
+.about-section {
+    background-color: var(--card-bg);
+}
+
+.about-section .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+}
+
+.about-image {
+    position: relative;
+    width: 300px; /* Taille de l'image hexagonale */
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    filter: drop-shadow(0 0 10px var(--accent-color));
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow: 0 0 8px var(--accent-color), 0 0 15px var(--accent-color);
+    z-index: 1;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-align: left; /* Aligné à gauche comme dans l'image */
+}
+
+.about-content h2::after { /* Supprimez le pseudo-élément si vous voulez pas le soulignement */
+    content: none;
+}
+
+.about-content h3 {
+    font-size: 28px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.btn-read-more {
+    background-color: var(--accent-color);
+    color: var(--bg-dark);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block; /* Pour le centrage si besoin, mais ici c'est à gauche */
+}
+
+.btn-read-more:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+
+/* Services Section */
+.services-section {
+    background-color: var(--bg-dark);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.service-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--accent-color);
+}
+
+.service-card .icon-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-color); /* Remplacez par une icône réelle */
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: var(--bg-dark);
+}
+
+.service-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.service-card p {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 25px;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    background-color: var(--card-bg);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.project-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-item img {
+    width: 100%;
+    height: 250px; /* Hauteur fixe pour l'exemple */
+    object-fit: cover;
+    display: block;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: var(--bg-dark);
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-form .form-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--text-light);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #888;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.btn-send-message {
+    background-color: var(--accent-color);
+    color: var(--bg-dark);
+    padding: 15px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: block; /* Pour qu'il prenne la largeur disponible et le centrer */
+    margin: 30px auto 0; /* Centrer le bouton */
+}
+
+.btn-send-message:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--card-bg);
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Media Queries pour la réactivité (Exemple simple) */
+@media (max-width: 992px) {
+    .hero-section .container,
+    .about-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content,
+    .about-content {
+        text-align: center;
+    }
+
+    .about-content h2, .about-content h3 {
+        text-align: center;
+    }
+
+    .hero-image, .about-image {
+        margin-top: 40px;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .services-grid,
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form .form-group {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-section, .about-section, .services-section,
+    .portfolio-section, .contact-section {
+        padding: 50px 0;
+    }
+
+    .navbar nav ul li {
+        margin-left: 0;
+    }
+}
+.social-links {
+    display: flex;
+    gap: 18px;
+    margin-top: 18px;
+}
+.social-icon {
+    color: #ffe607;
+    font-size: 1.6em;
+    transition: color 0.2s;
+}
+.social-icon:hover {
+    color: #fff;
+}
+
+.service-icon {
+    font-size: 2.5em;
+    color: #ffe607;
+    margin-bottom: 15px;
+    text-align: center;
+}
+    </style>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">Portfolio.</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <p>Hello, It's Me</p>
+                <h1>Franck Romual</h1>
+                <p>And I'm a <span class="highlight">Full-stack Developer</span></p>
+                <p>Passionné par la création de sites modernes, performants et accessibles.</p>
+                <P>Adresse : Dschang-Cameroun</P>
+                <p>telephone 📲: +237 695 743 343</p>
+                <p>Email : francklowe2000@gmail.com</p>
+               <!-- Exemple pour la section social-links -->
+<div class="social-links">
+    <a href="https://wa.me/237695743343" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://facebook.com/franck.lowe.14" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://twitter.com/lowe_franck14" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://linkedin.com/in/franck-lowe-0627a8325" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://instagram.com/franck.lowe.14" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+                    <a href="C:\Users\Franck\OneDrive\Bureau\mon cv.pdf" class="btn-download-cv">Download Cv</a>
+            </div>
+            <div class="hero-image">
+                <img src="D:\declaration\DSC_960.JPG" alt="Franck Romual">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-image">
+                <img src="D:\declaration\DSC_960.JPG" alt="Franck Romual">
+            </div>
+            <div class="about-content">
+                <h2>About Me</h2>
+                <h3>Frontend Developer!</h3>
+                <p>Bonjour, je suis Franck Romual, développeur web junior basé à Dschang.<br>
+        Après une reconversion depuis l’hôtellerie, je me suis lancé dans l'informatique où je suis actuellement étudiant en licence 2 formé au développement web (HTML, CSS, JavaScript, Laravel, Python).<br>
+        J’aime apprendre, relever des défis techniques et accompagner les entreprises dans leur transformation numérique.
+         <span id="more-text" style="display: none;">
+            Je maîtrise aussi les outils de design graphique et j'ai déjà réalisé plusieurs projets personnels et académiques. N'hésitez pas à me contacter pour discuter de vos besoins !
+         </span> 
+    </p>
+                <button class="btn-read-more">Read More</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <h3>Web Development</h3>
+        <p>Création de sites web modernes, responsives et performants.</p>
+        <span class="service-more" style="display:none;">
+            Développement de sites vitrines, e-commerce, applications web sur mesure avec les dernières technologies (HTML, CSS, JavaScript, Laravel, etc.).
+        </span>
+        <a href="#" class="btn-read-more-service">Read More</a>
+    </div>
+    <div class="service-card">
+        <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>Graphic Design</h3>
+        <p>Conception de logos, flyers et supports visuels attractifs.</p>
+        <span class="service-more" style="display:none;">
+            Création de chartes graphiques, illustrations, retouches photos et supports de communication adaptés à votre image.
+        </span>
+        <a href="#" class="btn-read-more-service">Read More</a>
+    </div>
+    <div class="service-card">
+        <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+        <h3>Digital Marketing</h3>
+        <p>Stratégies pour booster votre visibilité sur le web.</p>
+        <span class="service-more" style="display:none;">
+            Mise en place de campagnes sur les réseaux sociaux, référencement naturel (SEO), gestion de contenu et analyse de performance.
+        </span>
+        <a href="#" class="btn-read-more-service">Read More</a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <h2>Latest Project</h2>
+            <div class="portfolio-grid">
+               <div class="project-item">
+                <img src="C:\Users\Franck\yans\public\images\WhatsApp Image 2025-04-23 à 09.00.11_928f9c43.jpg" alt="Yan Restauration">
+                <h3>Yan Restauration & Traiteur</h3>
+                <p>Plateforme de gestion de restaurant et service traiteur (Laravel).</p>
+                <!-- <a href="#" class="btn-read-more">Voir le projet</a> -->
+            </div>
+            <div class="project-item">
+                <img src="C:\Users\Franck\OneDrive\Bureau\nouvelle aventure\chamloc.png" alt="Chamloc">
+                <h3>Chamloc</h3>
+                <p>Site web de location de chambres à Dschang, avec gestion des annonces (Laravel).</p>
+                <!-- <a href="#" class="btn-read-more">Voir le projet</a> -->
+            </div>
+            <div class="project-item">
+                <img src="project3.png" alt="Gestion du personnel">
+                <h3>Gestion du personnel</h3>
+                <p>Système de gestion du personnel pour une école (Laravel).</p>
+                <!-- <a href="#" class="btn-read-more">Voir le projet</a> -->
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Me!</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn-send-message">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Copyright © 2025 Franck Romual | Portfolio Développeur Web Junior </p>
+        </div>
+    </footer>
+<script>
+  
+function toggleReadMore() {
+    var moreText = document.getElementById("more-text");
+    var btn = document.querySelector(".btn-read-more");
+    if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        btn.textContent = "Read Less";
+    } else {
+        moreText.style.display = "none";
+        btn.textContent = "Read More";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".btn-read-more").onclick = toggleReadMore;
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // Pour le bouton About Me
+    var aboutBtn = document.querySelector(".btn-read-more");
+    if (aboutBtn) {
+        aboutBtn.onclick = function() {
+            var moreText = document.getElementById("more-text");
+            if (moreText.style.display === "none") {
+                moreText.style.display = "inline";
+                aboutBtn.textContent = "Read Less";
+            } else {
+                moreText.style.display = "none";
+                aboutBtn.textContent = "Read More";
+            }
+        };
+    }
+
+    // Pour les services
+    var serviceBtns = document.querySelectorAll(".btn-read-more-service");
+    serviceBtns.forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            var more = btn.previousElementSibling;
+            if (more.style.display === "none" || more.style.display === "") {
+                more.style.display = "inline";
+                btn.textContent = "Read Less";
+            } else {
+                more.style.display = "none";
+                btn.textContent = "Read More";
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
